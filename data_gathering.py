@@ -3,7 +3,7 @@ import re
 import pandas as pd
 import sqlite3
 
-from secrets import secrets
+from usr_secrets import secrets
 api_key = secrets['RAPIDAPI-KEY']
 database_name = secrets['DB-NAME']
 
@@ -112,7 +112,7 @@ if __name__ == "__main__":
     # convert lists to strings before saving
     df = pd.DataFrame(job_data)
     df_clean = df.copy()
-    print("DTypes: " + df_clean.dtypes)
+    print("DTypes: " + str(df_clean.dtypes))
     for col in df_clean.columns:
         # if col type is <list>, convert to <str>
         if df_clean[col].apply(lambda x: isinstance(x, list)).any():

@@ -1,9 +1,12 @@
 import sqlite3
 import pandas as pd
 
+from usr_secrets import secrets
+database_name = secrets['DB-NAME']
+
 # --- DATA --- #
 def connect():
-    conn = sqlite3.connect('job_database.db')
+    conn = sqlite3.connect(f'{database_name}.db')
     return conn
 
 def get_jobs():
