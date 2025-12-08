@@ -18,6 +18,9 @@ Find jobs from the database
 
 This will create a markdown file containing a list of jobs with hyperlinks to apply.
 
+### Example Output:
+![example output](example.png)
+
 ## TODO
 - Add user input
 - Expand job requirement options

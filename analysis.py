@@ -43,17 +43,18 @@ if __name__ == "__main__":
     print("----- Jobs Found -----")
     jobs = {}
     for i, row in df.iterrows():
-        
         if is_junior(row) and tools_filter(row, tools):
             title = row['job_title']
             link = row['job_apply_link']
-            jobs[title] = link
+            posted = row['job_posted_at']
+            city = row['job_city']
+            jobs[title] = {'link': link, 'posted': posted, 'city': city}
 
     print(f"Found {len(jobs)} jobs.")
 
     with open(f"{output_file}.md", "w") as f:
-        for title, link in jobs.items():
-            f.write(f"[{title}]({link})\n\n")
+        for title, details in jobs.items():
+            f.write(f"[{title}]({details['link']}) - {details['posted']} - {details['city']}\n\n")
 
     print(f"Write jobs to {output_file}.md")
     print("------ Finished ------")
